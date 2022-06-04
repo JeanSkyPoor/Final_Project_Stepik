@@ -21,3 +21,14 @@ class LoginPage(BasePage):
         assert self.is_element_present(*LoginPageLocators.REGISTER_PASSWORD)
         assert self.is_element_present(*LoginPageLocators.REGISTER_CONFIRM)
         assert self.is_element_present(*LoginPageLocators.REGISTER_BUTTON)
+
+
+    def register_new_user(self):
+
+        self.email, self.password = BasePage.create_email_and_password(self)
+
+        self.browser.find_element(*LoginPageLocators.REGISTER_EMAIL).send_keys(self.email)
+        self.browser.find_element(*LoginPageLocators.REGISTER_PASSWORD).send_keys(self.password)
+        self.browser.find_element(*LoginPageLocators.REGISTER_CONFIRM).send_keys(self.password)
+        self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON).click()
+        BasePage.should_be_autorized_user(self)
