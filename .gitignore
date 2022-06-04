@@ -2,3 +2,4 @@ __pycache__
 .pytest_cache
 venv
 chromedriver.exe
+python_test.py
