@@ -11,7 +11,7 @@ with open('page_links.json') as f:
     data = json.load(f)['links']
 
 
-@pytest.mark.need_review
+
 class TestUserAddToBasketFromProductPage():
 
     @pytest.fixture(scope='function', autouse=True)
@@ -23,7 +23,7 @@ class TestUserAddToBasketFromProductPage():
        login_page = LoginPage(browser, browser.current_url)
        login_page.register_new_user()
 
-
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser) -> None:
         link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
         page = ProductPage(browser, link)
