@@ -31,7 +31,6 @@ class TestUserAddToBasketFromProductPage():
         page.add_to_basket()
         page.check_item_name()
         page.check_item_price()
-        time.sleep(10)
     
 
     @pytest.mark.xfail
