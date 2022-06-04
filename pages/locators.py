@@ -15,3 +15,8 @@ class LoginPageLocators():
     REGISTER_PASSWORD = (By.NAME, 'registration-password1')
     REGISTER_CONFIRM = (By.NAME, 'registration-password2')
     REGISTER_BUTTON = (By.NAME, 'registration_submit')
+
+
+class ProductPageLocators():
+    BASKET_BUTTON = (By.CSS_SELECTOR, 'button.btn-add-to-basket')
+    
