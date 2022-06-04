@@ -2,5 +2,6 @@ __pycache__
 .pytest_cache
 venv
 chromedriver.exe
-python_test.py
 page_links.json
+python_test.py
+
