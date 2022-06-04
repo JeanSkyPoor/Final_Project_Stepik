@@ -11,7 +11,7 @@ with open('page_links.json') as f:
     data = json.load(f)['links']
 
 
-
+@pytest.mark.need_review
 class TestUserAddToBasketFromProductPage():
 
     @pytest.fixture(scope='function', autouse=True)
