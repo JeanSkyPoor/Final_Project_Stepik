@@ -1,14 +1,8 @@
 from pages.product_page import ProductPage
 import pytest
-import json
-from pages.locators import  ProductPageLocators
 from pages.basket_page import BasketPage
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
-import time
-
-with open('page_links.json') as f:
-    data = json.load(f)['links']
 
 
 
@@ -39,16 +33,14 @@ class TestUserAddToBasketFromProductPage():
         page = ProductPage(browser, link)
         page.open()
         page.add_to_basket()
-        assert page.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE),\
-            "Success message is presented, but should not be"
+        page.check_success_message_is_not_present()
 
 
 def test_guest_cant_see_success_message(browser) -> None:
     link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
     page = ProductPage(browser, link)
     page.open()
-    assert page.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE),\
-        "Success message is presented, but should not be"
+    page.check_success_message_is_not_present()
 
 
 @pytest.mark.xfail
@@ -57,8 +49,7 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     page = ProductPage(browser, link)
     page.open()
     page.add_to_basket()
-    assert page.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE),\
-        "Success message is not disappeared"
+    page.check_success_message_is_disappeared()
 
 
 def test_guest_should_see_login_link_on_product_page(browser) -> None:
