@@ -1,4 +1,3 @@
-from os import link
 from xmlrpc.client import Boolean
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
@@ -6,9 +5,8 @@ import math
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from pages.basket_page import BasketPage
 from pages.locators import BasePageLocators
-
+import faker
 
 class BasePage():
     def __init__(self, browser, url, timeout=10) -> None:
@@ -64,7 +62,7 @@ class BasePage():
 
 
     def go_to_login_page(self) -> None:
-        self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID).click()
+        self.browser.find_element(*BasePageLocators.LOGIN_LINK).click()
 
 
     def should_be_login_link(self) -> None:
@@ -74,3 +72,16 @@ class BasePage():
 
     def open_basket(self) -> None:
         self.browser.find_element(*BasePageLocators.BASKET_LINK).click()
+
+
+    def create_email_and_password(self) -> list:
+        self.f = faker.Faker()
+        self.email = self.f.email()
+        self.password = self.f.password()
+
+        return [self.email, self.password]
+
+
+    def should_be_autorized_user(self) -> None:
+        assert self.is_element_present(*BasePageLocators.USER_ICON),\
+            "User icon is not presented"
