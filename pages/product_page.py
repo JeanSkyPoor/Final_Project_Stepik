@@ -17,3 +17,8 @@ class ProductPage(BasePage):
         item_price = self.browser.find_element(*ProductPageLocators.ITEM_PRICE).text[1:]
         added_item_price = self.browser.find_element(*ProductPageLocators.BASKET_PRICE).text[1:]
         assert item_price == added_item_price, 'Price is different'
+
+
+    def should_not_be_success_message(self) -> None:
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE),\
+            "Success message is presented, but should bot be"
