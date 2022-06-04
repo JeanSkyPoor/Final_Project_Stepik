@@ -19,4 +19,8 @@ class LoginPageLocators():
 
 class ProductPageLocators():
     BASKET_BUTTON = (By.CSS_SELECTOR, 'button.btn-add-to-basket')
-    
+    ADDED_ITEM_NAME = (By.CSS_SELECTOR, '#messages > div:nth-child(1) > div > strong')
+    ITEM_NAME = (By.CSS_SELECTOR, 'div.col-sm-6 h1')
+    ITEM_PRICE = (By.CSS_SELECTOR, 'p.price_color')
+    BASKET_PRICE = (By.CSS_SELECTOR, '#messages > div.alert.alert-safe.alert-noicon.alert-info.fade.in > div > p:nth-child(1) > strong')
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, '#messages > div:nth-child(1) > div' )
